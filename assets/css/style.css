@@ -23,13 +23,12 @@ Ex-ex-large	    xxl	        ≥1400px
     padding-right: 0;
 }
 
-#web-app{
-    height: 100vh;
-    overflow: hidden;
+#contacts-container{
+    height: 60vh;
 }
 
-#contacts-container{
-    height: 80vh;
+#web-app{
+    height: 100vh;
 }
 
 .contact:hover{
@@ -38,7 +37,9 @@ Ex-ex-large	    xxl	        ≥1400px
 
 .container{
     width: 80%;
+    height: 90%;
     margin-top: 20px;
+    border: 1px solid grey;
 }
 
 ::-webkit-scrollbar {
@@ -66,3 +67,4 @@ Ex-ex-large	    xxl	        ≥1400px
     padding: 5px;
     height: 45px;
 }
+
