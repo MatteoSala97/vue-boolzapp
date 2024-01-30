@@ -68,3 +68,7 @@ Ex-ex-large	    xxl	        ≥1400px
     height: 45px;
 }
 
+#last-message{
+    font-size: 13px;
+    color: gray;
+}

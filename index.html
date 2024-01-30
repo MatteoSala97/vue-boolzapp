@@ -70,13 +70,13 @@
                                     <img
                                     style="width: 70px;" class="rounded-circle px-2" :src="contacts[index].avatar" alt="">
                                </figure>
-                               <div class="d-flex flex-column">
+                               <div class="d-flex flex-column lh-2 ">
                                     <span>{{contacts[index].name}}</span>
-                                    <span>Ultimo messaggio inviato</span>
+                                    <span id="last-message">Ultimo messaggio inviato</span>
                                </div>
                             </div>
                             <div class="mt-3 me-2">
-                                <span>placeholder</span>
+                                <span>{{currentDate()}}</span>
                             </div>
                         </div>
                     </div>
@@ -128,7 +128,6 @@
                         >
                         <i class="fa-solid fa-paper-plane fa-rotate-by" style="--fa-rotate-angle: 45deg;"></i>
                         <i class="fa-solid fa-microphone"></i>
-                        
                     </div>
                 </div>
             </div>
