@@ -15,7 +15,12 @@ Ex-ex-large	    xxl	        ≥1400px
 }
 
 :root{
-    
+    --bg-notifications: #8CD7FA
+}
+
+.col-4{
+    padding-left: 0;
+    padding-right: 0;
 }
 
 #web-app{
@@ -23,8 +28,12 @@ Ex-ex-large	    xxl	        ≥1400px
     overflow: auto;
 }
 
-#contacts{
+#contacts-container{
     height: 80vh;
+}
+
+.contact:hover{
+    background-color: #505050;
 }
 
 .container{
@@ -45,4 +54,15 @@ Ex-ex-large	    xxl	        ≥1400px
     border-radius: 10px;
     background-color:#fff;
     -webkit-box-shadow: inset 0 0 6px rgba(90,90,90,0.7);
+}
+
+#notifications{
+    background-color: var(--bg-notifications);
+}
+
+.fa-bell-slash{
+    background-color: #fff; 
+    color: var(--bg-notifications);
+    padding: 5px;
+    height: 45px;
 }
