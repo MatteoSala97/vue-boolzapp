@@ -183,6 +183,24 @@ createApp({
         setActiveChat(index){
             this.activeChat = index
         },
-        
+        sendMessage() {
+            if (this.userMessage.trim() !== "") {
+                const newMessage = {
+                    date: new Date().toLocaleString(),
+                    message: this.userMessage,
+                    status: "sent",
+                }
+                this.contacts[this.activeChat].messages.push(newMessage)
+                this.userMessage = ""
+                setTimeout(() => {
+                    const okMessage = {
+                        date: new Date().toLocaleString(),
+                        message: "Ok!",
+                        status: "received",
+                    }
+                    this.contacts[this.activeChat].messages.push(okMessage)
+                }, 1000)
+            }
+        },
     }
 }).mount("#app")

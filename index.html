@@ -121,8 +121,7 @@
                     </div>
                 </div>
                 <div 
-                class="d-flex justify-content-around pt-2 align-items-center "
-                style="">
+                class="d-flex justify-content-around pt-2 align-items-center ">
                     <i class="fa-regular fa-face-smile"></i>
                     <i class="fa solid fa-plus"></i>
                     <input 
@@ -131,9 +130,10 @@
                     name="userMessage"
                     id="userMessage"
                     aria-describedby="user message"
-                    keyUp.enter="sendMessage"
+                    v-model="userMessage"
+                    @keyup.enter="sendMessage"
                     >
-                    <i class="fa-solid fa-paper-plane fa-rotate-by" style="--fa-rotate-angle: 45deg;"></i>
+                    <i class="fa-solid fa-paper-plane fa-rotate-by" @click="sendMessage" style="--fa-rotate-angle: 45deg;"></i>
                     <i class="fa-solid fa-microphone"></i>
                 </div>
             </div>
