@@ -107,24 +107,18 @@
                     </div>
                 </div>
                 <!-- Livechat -->
-                <div 
-                id="livechat"
-                class="overflow-y-scroll" 
-                style="height: 85%; 
-                background-image: url('./assets/img/mine.jpg');">
-                    <div 
-                    v-for="message in contacts[activeChat].messages"
-                    :key="message.date"
-                    :class="{ 'sent': message.status === 'sent', 'received': message.status === 'received' }"
-                    class="received bg-light p-3 rounded position-relative ms-4 mt-3">
+                <div id="livechat" class="overflow-y-scroll" style="height: 85%; background-image: url('./assets/img/mine.jpg');">
+                    <div
+                        :class="message.status"
+                        v-for="message in contacts[activeChat].messages" :key="message.date"
+                        class="p-3 mt-3 rounded position-relative ">
                         <p class="m-0">
-                            {{message.message}}
+                            {{ message.message }}
                         </p>
                         <span>
-                            {{message.date}}
+                            {{ message.date }}
                         </span>
                     </div>
-                    
                 </div>
                 <div 
                 class="d-flex justify-content-around pt-2 align-items-center "
@@ -133,10 +127,11 @@
                     <i class="fa solid fa-plus"></i>
                     <input 
                     type="text" style="width: 500px;"
-                    class="form-control par2"
+                    class="form-control"
                     name="userMessage"
                     id="userMessage"
                     aria-describedby="user message"
+                    keyUp.enter="sendMessage"
                     >
                     <i class="fa-solid fa-paper-plane fa-rotate-by" style="--fa-rotate-angle: 45deg;"></i>
                     <i class="fa-solid fa-microphone"></i>
