@@ -11,6 +11,7 @@ createApp({
             },
             activeChat: 0,
             userMessage:"",
+            searchInput:"",
             contacts: [
                 {
                 name: 'Michele',
@@ -201,6 +202,11 @@ createApp({
                     this.contacts[this.activeChat].messages.push(okMessage)
                 }, 1000)
             }
+        },
+        
+        deleteMsg(msg){
+            const messageIndex = this.contacts[this.activeChat].messages.indexOf(msg);
+            this.contacts[this.activeChat].messages.splice(messageIndex, 1);
         },
     }
 }).mount("#app")

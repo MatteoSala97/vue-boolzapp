@@ -54,7 +54,13 @@
                             <button class="btn" type="submit">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
-                            <input class="form-control" style="width: 350px;" type="search" placeholder="Cerca o inizia una nuova chat" aria-label="Search">
+                            <input 
+                            v-model="searchInput"
+                            class="form-control" 
+                            style="width: 350px;" 
+                            type="search" 
+                            placeholder="Cerca o inizia una nuova chat" 
+                            aria-label="Search">
                             </form>
                         </div>
                     </nav>
@@ -107,10 +113,11 @@
                     </div>
                 </div>
                 <!-- Livechat -->
-                <div id="livechat" class="overflow-y-scroll" style="height: 85%; background-image: url('./assets/img/mine.jpg');">
+                <div id="livechat" class="chat overflow-auto" style="height: 85%; background-image: url('./assets/img/mine.jpg');">
                     <div
                         :class="message.status"
-                        v-for="message in contacts[activeChat].messages" :key="message.date"
+                        v-for="message in contacts[activeChat].messages" 
+                        :key="message.date"
                         class="p-3 mt-3 rounded position-relative ">
                         <p class="m-0">
                             {{ message.message }}
@@ -118,6 +125,11 @@
                         <span>
                             {{ message.date }}
                         </span>
+                        <i class="fa-solid fa-chevron-down dropdown-toggle m-0" type="button" data-bs-toggle="dropdown"></i>
+                        <ul class="dropdown-menu dropdown-menu-end py-0">
+                            <li><a class="dropdown-item" href="#">Message info</a></li>
+                            <li><a class="dropdown-item" href="#" @click="deleteMsg(message)">Delete message</a></li>
+                        </ul>
                     </div>
                 </div>
                 <div 

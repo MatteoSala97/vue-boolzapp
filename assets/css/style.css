@@ -106,3 +106,18 @@ body{
 .received{
     background-color: #909090;
 }
+
+.chat i{
+    position: absolute;
+    top: 5px;
+    right: 7px;
+    display: none;
+}
+
+.chat div:hover i{
+    display: block;
+}
+
+.chat i::after{
+    content: none;
+}
