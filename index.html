@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" data-bs-theme="">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,123 +16,135 @@
 
 </head>
 <body>
-    <div id="web-app">
-        <div id="app" class="container">
-            <div class="row">
-                <!-- Left sidebar -->
-                <div class="col-4">
-                    <div class="d-flex align-items-center justify-content-between">
-                       <div class="d-flex align-items-center ">
-                            <figure
-                            
-                            class="mt-3">
-                                <img class="rounded-circle px-2" src="./assets/img/avatar_io.jpg" style="width: 70px;" alt="">
-                            </figure>
-                            <span>Sofia</span>
-                       </div>
-                        <div class="d-flex gap-3">
-                            <i class="fa-solid fa-users-line"></i>
-                            <i class="fa-solid fa-circle-notch"></i>
-                            <i class="fa-solid fa-comment-dots"></i>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </div>
+
+    <div id="app" class="container">
+        <div class="row h-100">
+            <!-- Left sidebar -->
+            <div class="col-4 border px-0" id="col-left">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center ">
+                        <figure
+                        
+                        class="mt-3">
+                            <img class="rounded-circle px-2" src="./assets/img/avatar_io.jpg" style="width: 70px;" alt="">
+                        </figure>
+                        <span>Sofia</span>
                     </div>
-                    <!-- Notifications  -->
-                    <div id="notifications" class="d-flex align-items-center justify-content-between">
-                        <div class="d-flex align-items-center p-2">
-                            <i class="fa-solid fa-bell-slash fa-2x rounded-circle ms-2 p-1"></i>
-                            <div class="d-flex flex-column ps-3" style="font-size: 15px;">
-                                <span>Ricevi notifiche di nuovi messaggi</span>
-                                <span class="text-decoration-underline ">Attiva notifiche desktop</span>
-                            </div>
-                        </div>
+                    <div class="d-flex gap-3">
+                        <i class="fa-solid fa-users-line"></i>
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <i class="fa-solid fa-comment-dots"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
-                    <div>
-                        <nav class="navbar">
-                            <div class="container-fluid align-items-center justify-content-center">
-                              <form class="d-flex justify-content-between" role="search">
-                                <button class="btn" type="submit">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </button>
-                                <input class="form-control" style="width: 350px;" type="search" placeholder="Cerca o inizia una nuova chat" aria-label="Search">
-                              </form>
-                              <i class="fa-solid fa-layer-group"></i>
-                            </div>
-                        </nav>
-                    </div>
-                    <!-- Contacts -->
-                    <div id="contacts-container" class="overflow-y-scroll ">
-                        <div 
-                        v-for="(contact, index) in contacts"
-                        class="contact d-flex justify-content-between">
-                            <div class="d-flex align-items-center">
-                                <figure class="mt-3">
-                                    <img
-                                    style="width: 70px;" class="rounded-circle px-2" :src="contacts[index].avatar" alt="">
-                               </figure>
-                               <div class="d-flex flex-column lh-2 ">
-                                    <span>{{contacts[index].name}}</span>
-                                    <span id="last-message">Ultimo messaggio inviato</span>
-                               </div>
-                            </div>
-                            <div class="mt-3 me-2">
-                                <span>{{currentDate()}}</span>
-                            </div>
+                </div>
+                <!-- Notifications  -->
+                <div id="notifications" class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center p-2">
+                        <i class="fa-solid fa-bell-slash fa-2x rounded-circle ms-2 p-1"></i>
+                        <div class="d-flex flex-column ps-3" style="font-size: 15px;">
+                            <span>Ricevi notifiche di nuovi messaggi</span>
+                            <span class="text-decoration-underline ">Attiva notifiche desktop</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Right side - live chat -->
-                <div class="col-8">
-                    <!-- Selected profile -->
-                    <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <nav class="navbar">
+                        <div class="container-fluid align-items-center justify-content-center">
+                            <form class="d-flex justify-content-between" role="search">
+                            <button class="btn" type="submit">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                            <input class="form-control" style="width: 350px;" type="search" placeholder="Cerca o inizia una nuova chat" aria-label="Search">
+                            </form>
+                        </div>
+                    </nav>
+                </div>
+                <!-- Contacts -->
+                <div id="contacts-container" class="overflow-y-scroll">
+                    <div 
+                    v-for="(contact, index) in contacts"
+                    class="contact d-flex justify-content-between"
+                    @click="setActiveChat(index)">
                         <div class="d-flex align-items-center">
                             <figure class="mt-3">
-                                 <img class="rounded-circle px-2" src="https://picsum.photos/50/50" alt="">
+                                <img
+                                style="width: 70px;" class="rounded-circle px-2" 
+                                :src="contacts[index].avatar" alt="">
                             </figure>
-                            <div class="d-flex flex-column">
-                                <span>Matteo</span>
-                                <span>Ultimo accesso oggi alle xx:xx</span>
+                            <div class="d-flex flex-column lh-2 ">
+                                <span>{{contact.name}}</span>
+                                <span id="last-message">{{ contact.messages[contact.messages.length - 1].message }}</span>
                             </div>
                         </div>
-                        <div class="d-flex gap-4">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <i class="fa-solid fa-paperclip"></i>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        <div class="mt-3 me-2" id="last-message-date-container">
+                            <span id="last-message-date"> {{ contact.messages[contact.messages.length - 1].date }}</span>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Right side -->
+            <div class="col-8" id="col-right">
+                <!-- Selected profile -->
+                <div class="d-flex align-items-center justify-content-between">
                     <div 
-                    class="overflow-y-auto " 
-                    style="height:100%; 
-                    background-image: url('./assets/img/mine.jpg');">
-                        <div>
-                            <span></span>
-                        </div>
-                        <div
-                        v-for="(userMessage) in userMessages" style="background-color: green; width: fit-content;">
-                            <span></span>
-                            <span></span>
+                    class="d-flex align-items-center">
+                        <figure class="mt-3">
+                                <img class="rounded-circle px-2" 
+                                :src="contacts[activeChat].avatar" 
+                                width="70"
+                                alt="">
+                        </figure>
+                        <div class="d-flex flex-column">
+                            <span>{{contacts[activeChat].name}}</span>
+                            <span>Ultimo accesso oggi alle 12:00</span>
                         </div>
                     </div>
+                    <div class="d-flex gap-4">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+                <!-- Livechat -->
+                <div 
+                id="livechat"
+                class="overflow-y-scroll" 
+                style="height: 85%; 
+                background-image: url('./assets/img/mine.jpg');">
                     <div 
-                    class="d-flex justify-content-around pt-2 align-items-center "
-                    style="">
-                        <i class="fa-regular fa-face-smile"></i>
-                        <i class="fa solid fa-plus"></i>
-                        <input 
-                        type="text" style="width: 500px;"
-                        class="form-control par2"
-                        name="userMessage"
-                        id="userMessage"
-                        aria-describedby="user message"
-                        >
-                        <i class="fa-solid fa-paper-plane fa-rotate-by" style="--fa-rotate-angle: 45deg;"></i>
-                        <i class="fa-solid fa-microphone"></i>
+                    v-for="message in contacts[activeChat].messages"
+                    :key="message.date"
+                    :class="{ 'sent': message.status === 'sent', 'received': message.status === 'received' }"
+                    class="received bg-light p-3 rounded position-relative ms-4 mt-3">
+                        <p class="m-0">
+                            {{message.message}}
+                        </p>
+                        <span>
+                            {{message.date}}
+                        </span>
                     </div>
+                    
+                </div>
+                <div 
+                class="d-flex justify-content-around pt-2 align-items-center "
+                style="">
+                    <i class="fa-regular fa-face-smile"></i>
+                    <i class="fa solid fa-plus"></i>
+                    <input 
+                    type="text" style="width: 500px;"
+                    class="form-control par2"
+                    name="userMessage"
+                    id="userMessage"
+                    aria-describedby="user message"
+                    >
+                    <i class="fa-solid fa-paper-plane fa-rotate-by" style="--fa-rotate-angle: 45deg;"></i>
+                    <i class="fa-solid fa-microphone"></i>
                 </div>
             </div>
         </div>
     </div>
+    
 
 
 

@@ -13,6 +13,28 @@ Ex-ex-large	    xxl	        ≥1400px
     box-sizing: border-box;
     /* border: 1px solid red; */
 }
+body{
+    background-image:
+        linear-gradient(
+            to bottom,
+            #359589 0px,
+            #359589 15vh,
+            #d9dbd7 15vh,
+            #d9dbd7 100%
+        );
+    height: 100vh;
+    font-family: sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#col-left,
+#col-right{
+    background-color: #e9eaed;
+}
+
+#app{
+    height: 95%;
+}
 
 :root{
     --bg-notifications: #909090;
@@ -23,16 +45,8 @@ Ex-ex-large	    xxl	        ≥1400px
     padding-right: 0;
 }
 
-#contacts-container{
-    height: 60vh;
-}
-
-#web-app{
-    height: 100vh;
-}
-
 .contact:hover{
-    background-color: #505050;
+    background-color: #d0d0d0;
 }
 
 .container{
@@ -42,28 +56,13 @@ Ex-ex-large	    xxl	        ≥1400px
     border: 1px solid grey;
 }
 
-::-webkit-scrollbar {
-    width: 12px;
-}
-
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 4px rgba(200,200,200,1);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color:#fff;
-    -webkit-box-shadow: inset 0 0 6px rgba(90,90,90,0.7);
-}
-
 #notifications{
-    background-color: var(--bg-notifications);
+    background-color: #8cd7fa;
 }
 
 .fa-bell-slash{
-    background-color: #707070; 
-    color: var(--bg-notifications);
+    background-color: #ffffff; 
+    color: #8cd7fa;
     padding: 5px;
     height: 45px;
 }
@@ -71,4 +70,30 @@ Ex-ex-large	    xxl	        ≥1400px
 #last-message{
     font-size: 13px;
     color: gray;
+}
+
+#last-message-date-container{
+    position: relative;
+}
+
+#last-message-date{
+    font-size: 10px;
+    color: gray;
+    position: absolute;
+    right: 0;
+}
+
+.sent,
+.received{
+    width: 40%;
+    background-color: #d8f8bf;
+}
+
+.sent span,
+.received span{
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 12px;
+    color: #c6bebd;
 }

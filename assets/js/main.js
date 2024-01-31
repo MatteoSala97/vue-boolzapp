@@ -5,6 +5,11 @@ const {
 createApp({
     data(){
         return{
+            user: {
+                name: 'Nome Utente',
+                avatar: '_io'
+            },
+            activeChat: 0,
             userMessage:"",
             contacts: [
                 {
@@ -175,11 +180,8 @@ createApp({
 
     },
     methods:{
-        currentDate() {
-            const current = new Date();
-            const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`
-            return date
-        }
-      
+        setActiveChat(index){
+            this.activeChat = index
+        },
     }
 }).mount("#app")
