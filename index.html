@@ -125,11 +125,8 @@
                         <span>
                             {{ message.date }}
                         </span>
-                        <i class="fa-solid fa-chevron-down dropdown-toggle m-0" type="button" data-bs-toggle="dropdown"></i>
-                        <ul class="dropdown-menu dropdown-menu-end py-0">
-                            <li><a class="dropdown-item" href="#">Message info</a></li>
-                            <li><a class="dropdown-item" href="#" @click="deleteMsg(message)">Delete message</a></li>
-                        </ul>
+                        <i class="fa-solid fa-xmark m-0" type="button" @click="deleteMsg(message)"></i>
+                        
                     </div>
                 </div>
                 <div 

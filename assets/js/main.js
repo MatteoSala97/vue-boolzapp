@@ -204,8 +204,8 @@ createApp({
             }
         },
         
-        deleteMsg(msg){
-            const messageIndex = this.contacts[this.activeChat].messages.indexOf(msg);
+        deleteMsg(message){
+            const messageIndex = this.contacts[this.activeChat].messages.indexOf(message);
             this.contacts[this.activeChat].messages.splice(messageIndex, 1);
         },
     }
