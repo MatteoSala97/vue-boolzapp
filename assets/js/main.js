@@ -11,7 +11,8 @@ createApp({
             },
             activeChat: 0,
             userMessage:"",
-            searchInput:"",
+            visible: true,
+            searchText: "",
             contacts: [
                 {
                 name: 'Michele',
@@ -208,5 +209,14 @@ createApp({
             const messageIndex = this.contacts[this.activeChat].messages.indexOf(message);
             this.contacts[this.activeChat].messages.splice(messageIndex, 1);
         },
+        searchContact(){
+            this.contacts.forEach((contact) => {
+                if(contact.name.toLowerCase().includes(this.searchText.toLowerCase())){
+                    contact.visible = true
+                } else {
+                    contact.visible = false
+                }
+            })
+        }
     }
 }).mount("#app")

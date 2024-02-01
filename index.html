@@ -55,7 +55,8 @@
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
                             <input 
-                            v-model="searchInput"
+                            v-model="searchText"
+                            @keyup="searchContact"
                             class="form-control" 
                             style="width: 350px;" 
                             type="search" 
@@ -67,9 +68,11 @@
                 </div>
                 <!-- Contacts -->
                 <div id="contacts-container" class="overflow-y-scroll">
-                    <div 
+                    <div
                     v-for="(contact, index) in contacts"
-                    class="contact d-flex justify-content-between"
+                    class="contact"
+                    :class="contact.visible ? 'd-flex justify-content-between' : '' "
+                    v-show="contact.visible"
                     @click="setActiveChat(index)">
                         <div class="d-flex align-items-center">
                             <figure class="mt-3">
